@@ -1,0 +1,29 @@
+
+<div class="container-fluid">
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+<div class="col-lg-12">
+  <h3 class="page-header"><i class="icon_house_alt"></i>Thông Tin Cá Nhân</h3>
+  <ol class="breadcrumb bor panel">
+    <li><i class="fa fa-home"></i><a href="" class="fonta">Home</a></li>
+    <li><i class="fap fonta">sinhvien</i></li>
+    <li><i class="fap fonta">thongtin</i></li>
+  </ol>
+    <section class="panel">
+        <header class="panel-heading" style="margin-top:30px">Thông tin cá nhân</header>
+        <div *ngIf="sv!=null">
+          <p>Họ Tên: {{sv.hoten}}</p>
+          <p>Mã Sinh Viên: {{sv.masv}} </p>
+          <p>Địa Chỉ: {{sv.diachi}} </p>
+          <p>Ngày Tháng Năm Sinh: {{sv.namsinh}}</p>
+          <p>Giới Tính: {{sv.gioitinh}} - <span>Khoá: {{sv.khoa}}</span></p>
+          <p>Chuyên Ngành: {{sv.chuyennganh}}</p>
+          <button (click)="Change()" style="margin-left:300px;margin-bottom:20px;margin-top:20px;" class="btn btn-primary">Đổi Mật Khẩu</button>
+        </div>
+      </section>
+  </div>
+</div>
+</section>
+</section>
+</div>

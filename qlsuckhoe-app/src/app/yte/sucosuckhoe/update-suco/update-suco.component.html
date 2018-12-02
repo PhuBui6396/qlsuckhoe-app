@@ -1,0 +1,105 @@
+<div *ngIf="check">
+<div class="container-fluid">
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+<div class="col-lg-12">
+    <p class="font">Sự cố sức khỏe</p>
+    <ol class="breadcrumb bor">
+      <li><i class="fa fa-home"></i><a href="" class="fonta">Home</a></li>
+      <li><i class="fap fonta">sucosuckhoe</i></li>
+      <li><i class="fap fonta">update</i></li>
+    </ol>
+        <section class="panel">
+            <header class="breadcrumb bor">
+                Cập nhật sự cố
+              </header>
+        <div class="panel-body">
+        <form class="example-form" [formGroup]="addForm">
+            <div class="form-group">
+              <mat-form-field class="example-full-width1">
+                  <input style="text-align:center" formControlName="hoten" matInput placeholder="Họ Tên - Mã Sinh Viên">
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field class="example-full-width1">
+                <input formControlName="loaisuco" matInput placeholder="Loại Sự Cố">
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field class="example-full-width1">
+                <input formControlName="mucdo" matInput placeholder="Mức Độ">
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field class="example-full-width1">
+                <input  formControlName="ngay" [(ngModel)]="date" matInput [matDatepicker]="picker" placeholder="Ngày Xảy Ra Sự Cố">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field class="example-full-width1">
+                <textarea formControlName="bienphap" matInput placeholder="Biện pháp"  rows="3"></textarea>
+              </mat-form-field>       
+            </div>
+            <label for="bienphap" class="example-full-width1">Thuốc :</label>
+            <div class="form-group" formArrayName="thuocss">  
+                <div *ngFor="let group of addthuocArray.controls; let i = index;" [formGroupName]="i">  
+                  <div class="row" style="margin-left:160px">
+                        <div class="div1" style="width:25%">
+                            <mat-select placeholder="Loại Thuốc" formControlName="idloaithuoc" (ngModelChange)="onChange($event,i)">
+                              <mat-option [value]="loaithuoc.idloaithuoc" *ngFor="let loaithuoc of loaithuocs">
+                                {{loaithuoc.tenloai}}
+                              </mat-option>
+                            </mat-select>
+                        </div>
+                        <div class="div2" style="width:25%;margin-left:20px">
+                            <mat-select placeholder="Tên Thuốc" formControlName="idthuoc">
+                                <mat-option [value]="thuoc.idthuoc" *ngFor="let thuoc of thuocs[i]">
+                                  {{thuoc.tenthuoc}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                        <div class="div3" style="width:20%;margin-left:5px">
+                            <button (click)="deleteThuoc(i)" mat-button color="warn"><i class="glyphicon glyphicon-remove"></i></button>
+                        </div>
+                    </div>
+                  </div>
+                <button (click)="addThuoc()" class="btn btn-success fixbtnadd"><i class="glyphicon glyphicon-plus"></i></button>
+              </div>
+              <label for="bienphap" class="example-full-width1">Thiết bị y tế :</label>
+              <div class="form-group" formArrayName="thietbiss">    
+                  <div *ngFor="let group of addthietbiArray.controls; let i = index;" [formGroupName]="i">  
+                      <div class="row" style="margin-left:160px">  
+                      <div class="div4" style="width:40%">
+                              <mat-select placeholder="Tên Thiết Bị" formControlName="idthietbi">
+                                <mat-option [value]="thietbi.idthietbiyte" *ngFor="let thietbi of thietbis">
+                                  {{thietbi.tenthietbi}}
+                                </mat-option>
+                              </mat-select>
+                        </div>
+                        <div class="div5" style="width:20%;margin-left:5px">
+                            <button (click)="deleteThietbi(i)" mat-button color="warn"><i class="glyphicon glyphicon-remove"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-success fixbtnadd" (click)="addThietbi()"><i class="glyphicon glyphicon-plus"></i></button>
+              </div>
+              <div class="form-group example-full-width1">
+                  <label for="nguoixuly">Người xử lý :</label>
+                  <input type="text" formControlName="nguoixuly" placeholder="" name="nguoixuly" class="form-control" id="nguoixuly">
+              </div>
+              <div class="form-group fixbutton">
+                  <button (click)="addSuco()" class="btn btn-success">Cập Nhật</button>
+                  <button (click)="Huy()" style="margin-left:50px;" class="btn btn-danger">Hủy</button>
+              </div>
+          </form>
+        </div>
+        </section>
+    </div>
+  </div>
+  </section>
+  </section>
+  </div>
+</div>

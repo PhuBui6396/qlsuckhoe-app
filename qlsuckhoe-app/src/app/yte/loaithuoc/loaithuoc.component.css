@@ -1,0 +1,17 @@
+.bg-input{
+    text-align: left;
+}
+table {
+    width: 100%;
+  }
+  th{
+    font-size: 15px;
+  }
+  .mat-form-field {
+    margin-top:20px;
+    font-size: 14px;
+    width: 100%;
+  }
+  .btn1 {
+    color : rgba(241, 238, 35, 0.96);
+  }

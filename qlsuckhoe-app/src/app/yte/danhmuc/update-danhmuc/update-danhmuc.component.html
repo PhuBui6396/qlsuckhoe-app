@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+<div class="col-lg-12">
+        <h3 class="page-header"><i class="icon_document_alt"></i>Quản lý danh mục</h3>
+    <ol class="breadcrumb bor">
+      <li><i class="fa fa-home"></i><a href="" class="fonta">Home</a></li>
+      <li><i class="fap fonta">quantri</i></li>
+      <li><i class="fap fonta">danhmuc</i></li>
+      <li><i class="fap fonta">update</i></li>
+    </ol>
+        <section class="panel">
+            <header class="breadcrumb bor">
+                <label for="chon">Cập nhật danh mục</label>
+              </header>
+              <form class="example-form" [formGroup]="updateForm">
+                <div class="form-group">
+                            <mat-form-field class="example-full-width1">
+                              <input formControlName="tendanhmuc" matInput placeholder="Tên danh mục">
+                            </mat-form-field>
+                </div>
+                  <div class="form-group fixbutton">
+                      <button (click)="Update()" class="btn btn-success">Cập nhật</button>
+                      <button (click)="Huy()" style="margin-left:50px;" class="btn btn-danger">Hủy</button>
+                  </div>
+                </form>
+              </section>
+          </div>
+    </div>
+</section>
+</section>
+</div>

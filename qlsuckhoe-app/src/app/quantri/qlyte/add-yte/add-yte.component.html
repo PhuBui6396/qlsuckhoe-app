@@ -1,0 +1,72 @@
+
+<div class="container-fluid">
+        <section id="main-content">
+            <section class="wrapper">
+                <div class="row">
+    <div class="col-lg-12">
+            <h3  class="page-header"><i class="glyphicon glyphicon-user"></i>Nhân Viên Y Tế</h3>
+  <ol class="breadcrumb bor">
+    <li><i class="fa fa-home"></i><a href="" class="fonta">Home</a></li>
+    <li><i class="fap fonta">quantri</i></li>
+    <li><i class="fap fonta">yte</i></li>
+    <li><i class="fap fonta">add</i></li>
+  </ol>
+      <section class="panel">
+          <header class="breadcrumb bor">
+              <label for="chon">Thêm mới nhân viên y tế</label>
+            </header>
+          <form class="example-form" [formGroup]="addForm">
+            <div class="form-group font">
+                <div class="">
+                    <mat-form-field class="example-full-width1">
+                        <input formControlName="hoten" matInput placeholder="Họ Và Tên">
+                      </mat-form-field>
+                  </div>
+            </div>
+             <div class="form-group font2">
+                      <label for="gioitinh">Giới Tính :</label>
+                        <mat-radio-group formControlName="gioitinh" style="padding-left:30px;">
+                            <mat-radio-button value="Nam">Nam</mat-radio-button>
+                            <mat-radio-button value="Nữ" style="padding-left:30px;">Nữ</mat-radio-button>
+                        </mat-radio-group>
+              </div>
+              <mat-form-field class="example-full-width1 font1">
+                <input  formControlName="namsinh" [(ngModel)]="date" matInput [matDatepicker]="picker" placeholder="Ngày tháng năm sinh">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker></mat-datepicker>
+              </mat-form-field>
+              <div class="form-group font1">
+                  <mat-form-field class="example-full-width1">
+                      <input formControlName="diachi" matInput placeholder="Địa chỉ">
+                    </mat-form-field>
+                <mat-form-field class="example-full-width1">
+                    <input formControlName="socmt" matInput placeholder="Số chứng minh">
+                  </mat-form-field>  
+              </div>
+              <div class="form-group font1">
+                  <mat-form-field class="example-full-width1">
+                      <input formControlName="sodt" matInput placeholder="Số điện thoại">
+                    </mat-form-field>
+                <mat-form-field class="example-full-width1">
+                    <input formControlName="chucvu" matInput placeholder="Chức vụ">
+                  </mat-form-field>  
+              </div>
+              <div class="form-group font1">
+                  <mat-form-field class="example-full-width1">
+                      <input formControlName="tendangnhap" matInput placeholder="Tên đăng nhập">
+                    </mat-form-field>
+                <mat-form-field class="example-full-width1">
+                    <input type="password" formControlName="socmt" matInput placeholder="Mật khẩu">
+                  </mat-form-field>  
+              </div>
+              <div class="form-group fixbutton">
+                    <button (click)="Add()" class="btn btn-success">Thêm mới</button>
+                    <button (click)="Huy()" style="margin-left:50px;" class="btn btn-danger">Hủy</button>
+                </div>
+            </form>
+          </section>
+      </div>
+</div>
+</section>
+</section>
+</div>

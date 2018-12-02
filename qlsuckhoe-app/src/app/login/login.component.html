@@ -1,0 +1,28 @@
+
+        <div class="container">
+          <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="login-wrap">
+                    <p class="login-img"><i class="icon_lock_alt"></i></p>
+            <label for="username" style="color: rgb(77, 103, 218)">Tên Đăng Nhập</label>
+            <div class="input-group">   
+                <span class="input-group-addon"><i class="icon_profile"></i></span>
+                <input type="text" class="form-control" id="username" placeholder="Username" formControlName="username">
+                <div *ngIf="submitted && f.username.errors" class="error">
+                    <div *ngIf="f.username.errors.required" style="color: red">Username is required</div>
+                </div>
+            </div>
+              <label for="password" style="color: rgb(77, 103, 218)">Mật Khẩu</label>
+              <div class="input-group">
+                <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+                <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+                <div *ngIf="submitted && f.password.errors" class="error">
+                    <div *ngIf="f.password.errors.required" style="color: red">Password is required</div>
+                </div>       
+            </div>
+            <button class="btn btn-primary btn-lg btn-block" >Login</button>
+            <div *ngIf="invalidLogin" class="error">
+                <div style="color:red">Invalid credentials.</div>
+            </div>
+         </div>
+        </form>
+  </div>

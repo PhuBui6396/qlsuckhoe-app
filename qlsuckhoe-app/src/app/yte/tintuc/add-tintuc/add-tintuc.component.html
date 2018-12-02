@@ -1,0 +1,65 @@
+
+<div class="container-fluid">
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+<div class="col-lg-12">
+    <p class="font">Thêm mới tin tức</p>
+    <ol class="breadcrumb bor">
+      <li><i class="fa fa-home"></i><a href="" class="fonta">Home</a></li>
+      <li><i class="fap fonta">yte</i></li>
+      <li><i class="fap fonta">tintuc</i></li>
+      <li><i class="fap fonta">add</i></li>
+    </ol>
+        <section class="panel">
+            <header class="breadcrumb bor">
+                <label for="chon">Thêm mới tin tức</label>
+              </header>
+              <form class="" [formGroup]="addForm">
+                    <div class="form-group">
+                            <mat-form-field class="example-form">
+                              <input formControlName="tieude" matInput placeholder="Tiêu Đề">
+                            </mat-form-field>
+                    </div>
+                    <div class="form-group">
+                            <mat-form-field class="example-form">
+                              <input  formControlName="ngaydang" [(ngModel)]="date" matInput [matDatepicker]="picker" placeholder="Ngày Đăng">
+                              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                              <mat-datepicker touchUi #picker></mat-datepicker>
+                            </mat-form-field>
+                    </div>
+                    <div class="form-group">
+                        <label for="nd" style="margin-left:50px">Nội Dung:</label>
+                        <app-upload-tintuc *ngIf="!showFiles"
+                        [visible]="!showFiles"
+                        (onDecline)="onCloseImage()"
+                        (onConfirm)="onAddImage()">
+                        </app-upload-tintuc>
+                        <div class="example-full-width1" style="margin-top:20px">
+                            <ckeditor
+                            [(ngModel)]="tintuc"
+                            formControlName="noidung"
+                            [config]="ckeConfig"
+                            #ckeditor
+                            debounce="500">
+                            <ckbutton [name]="'imageExplorer'"
+                            [command]="'openImageExplorer'"
+                            (click)="openImageExplorer($event)"
+                            [icon]="'/assets/img/img.png'"
+                            [label]="'Open image explorer'"
+                            [toolbar]="'insert,1'">
+                            </ckbutton>
+                            </ckeditor>
+                        </div>
+                    </div>
+                  <div class="form-group fixbutton">
+                      <button (click)="Add()" class="btn btn-success">Thêm mới</button>
+                      <button (click)="Huy()" style="margin-left:50px;" class="btn btn-danger">Hủy</button>
+                  </div>
+                </form>
+              </section>
+          </div>
+    </div>
+    </section>
+    </section>
+    </div>

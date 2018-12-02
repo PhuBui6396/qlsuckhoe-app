@@ -1,0 +1,54 @@
+
+<div class="container-fluid">
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+<div class="col-lg-12">
+    <h3 class="page-header"><i class="icon_document_alt"></i>Quản lý Bệnh</h3>
+    <ol class="breadcrumb bor">
+      <li><i class="fa fa-home"></i><a href="" class="fonta">Home</a></li>
+      <li><i class="fap fonta">yte</i></li>
+      <li><i class="fap fonta">benh</i></li>
+      <li><i class="fap fonta">add</i></li>
+    </ol>
+        <section class="panel">
+            <header class="breadcrumb bor">
+                <label for="chon">Thêm mới bệnh</label>
+              </header>
+              <form class="example-form" [formGroup]="updateForm">
+                  <div class="form-group">
+                    <mat-form-field class="example-full-width1">
+                      <input formControlName="tenbenh" matInput placeholder="Tên bệnh">
+                    </mat-form-field>
+                  </div>
+                  <div class="form-group font2" style="margin-left:148px;width: 100%">
+                      <label for="tendanhmuc">Danh Mục :</label>
+                      <mat-form-field class="example-full-width2">
+                          <mat-select placeholder="Danh mục" formControlName="iddanhmuc">
+                            <mat-option *ngFor="let danhmuc of danhmucs" [value]="danhmuc.iddanhmuc">
+                              {{danhmuc.tendanhmuc}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                  </div>
+                    <div class="form-group">
+                        <mat-form-field class="example-full-width1">
+                          <input formControlName="trieuchung" matInput placeholder="Triệu chứng">
+                        </mat-form-field>
+                      </div>
+                      <div class="form-group">
+                          <mat-form-field class="example-full-width1">
+                            <input formControlName="cachchua" matInput placeholder="Cách chữa">
+                          </mat-form-field>
+                      </div>
+                  <div class="form-group fixbutton">
+                      <button (click)="Add()" class="btn btn-success">Cập Nhật</button>
+                      <button (click)="Huy()" style="margin-left:50px;" class="btn btn-danger">Hủy</button>
+                  </div>
+                </form>
+              </section>
+          </div>
+  </div>
+  </section>
+  </section>
+  </div>

@@ -1,0 +1,16 @@
+<button style="margin-left:600px" mat-button mat-dialog-close color="warn"><i class="glyphicon glyphicon-remove"></i></button>
+<h1 mat-dialog-title>Kết Quả Khám Định Kỳ :</h1>
+<div mat-dialog-content class="fix">
+  <p>Họ Tên: {{data.hoten}} - Mã Sinh Viên: {{data.masv}}</p>
+  <p>Ngày Khám: {{data.ngaykham}}</p>
+  <p>Chiều Cao: {{(data.chieucao*100-data.chieucao*100%100)/100}}m{{data.chieucao*100%100}}<span> Cân Nặng: {{data.cannang}}Kg</span></p>
+  <p>Huyết Áp: {{data.huyetap}}mmHg <span>
+      Nhịp Tim: {{data.nhiptim}}bpm
+  </span> </p>
+  <div>
+    <p *ngFor="let ketqua of data.ketqua">
+        {{ketqua.benh.danhmuc.tendanhmuc}}: {{ketqua.benh.tenbenh}}<span>  Chuẩn đoán: {{ketqua.chuandoan}}</span>
+    </p>
+  </div>
+  <p>Loại Sức Khỏe: Loại {{data.loaisuckhoe}}<span> Kết Luận :{{data.ketluan}}</span></p>
+</div>

@@ -1,0 +1,106 @@
+<div *ngIf="check">
+<div class="container-fluid">
+        <section id="main-content">
+            <section class="wrapper">
+                <div class="row">
+<div class="col-lg-12">
+  <h3 class="page-header"><i class="fa fa-th"></i>Khám Định Kỳ</h3>
+  <ol class="breadcrumb bor">
+    <li><i class="fa fa-home"></i><a href="" class="fonta">Home</a></li>
+    <li><i class="fap fonta">khamdinhky</i></li>
+    <li><i class="fap fonta">update</i></li>
+  </ol>
+</div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+      <section class="panel">
+            <header class="panel-heading">
+                    Cập nhật kết quả khám Định Kỳ
+                  </header>
+      <div class="panel-body">
+      <div class="example-form">
+          <div class="form-group">
+              <mat-form-field class="example-full-width1">
+                  <input style="text-align:center" matInput placeholder="Họ Tên - Mã Sinh Viên" [(ngModel)]=hoten disabled>
+              </mat-form-field>
+            </div>
+      </div>
+      <form class="example-form" [formGroup]="updateForm">
+          <div class="form-group">
+              <mat-form-field class="example-full-width1">
+                <input  formControlName="ngaykham" [(ngModel)]="date" matInput [matDatepicker]="picker" placeholder="Ngày khám">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker></mat-datepicker>
+              </mat-form-field>
+          </div>
+          <div class="row">
+              <div class="form-group col-lg-6">
+                  <mat-form-field class="example-full-width1">
+                      <input formControlName="chieucao" matInput placeholder="Chiều cao">
+                  </mat-form-field>
+              </div>
+              <div class="form-group col-lg-6">
+                  <mat-form-field class="example-full-width1">
+                      <input formControlName="cannang" matInput placeholder="Cân Nặng">
+                  </mat-form-field>
+              </div>
+          </div>
+          <div class="row">
+              <div class="form-group col-lg-6">
+                  <mat-form-field class="example-full-width1">
+                      <input formControlName="huyetap" matInput placeholder="Huyết Áp">
+                  </mat-form-field>
+              </div>
+              <div class="form-group col-lg-6">
+                  <mat-form-field class="example-full-width1">
+                      <input formControlName="nhiptim" matInput placeholder="Nhịp Tim">
+                  </mat-form-field>
+              </div>
+           </div>
+           <div formArrayName="ketqua" class="form-group">
+              <div *ngFor="let group of addDinhkyArray.controls; let i = index" [formGroupName]="i">
+                  <div class="form-group font2" style="margin-left:148px;width: 100%">
+                  <label for="tendanhmuc">{{benhs[i].tendanhmuc}}: </label>
+                  <mat-form-field class="example-full-width2 font1">
+                      <mat-select placeholder="Tên Bệnh" formControlName="idbenh">
+                          <mat-option [value]="b.idbenh" *ngFor="let b of benhs[i].benh">{{b.tenbenh}}</mat-option>
+                      </mat-select>
+                  </mat-form-field>
+                  </div>
+                  <div class="form-group font2" style="margin-left:148px;width: 100%">
+                      <label for="chuandoan">Chuẩn Đoán:</label>
+                      <mat-form-field class="example-full-width2 font1">
+                          <input formControlName="chuandoan" matInput placeholder="Chuẩn đoán" name="chuandoan" class="form-control" id="chuandoan">
+                      </mat-form-field>
+                  </div>
+              </div>
+          </div>
+          <div class="form-group font2" style="margin-left:148px;width: 100%">
+              <label for="loaisuckhoe">Loại sức khỏe:</label>
+              <mat-form-field class="example-full-width2">
+                <mat-select formControlName="loaisuckhoe" placeholder="Loại Sức Khỏe">
+                    <mat-option [value]="1">Loại I</mat-option>
+                    <mat-option [value]="2">Loại II</mat-option>
+                    <mat-option [value]="3">Loại III</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          <div class="form-group">
+            <mat-form-field class="example-full-width1 font1">
+              <input formControlName="ketluan" matInput placeholder="Kết Luận" name="ketluan" class="form-control" id="ketluan">
+            </mat-form-field>
+          </div>
+            <div class="form-group fixbutton">
+                <button class="btn btn-success" (click)="updateDinhky()">Cập nhật</button>
+                <button class="btn btn-danger" style="margin-left:50px" (click)="Huy()">Hủy</button>
+            </div>
+        </form>
+      </div>
+    </section>
+  </div>
+  </div>
+</section>
+</section>
+</div>
+</div>

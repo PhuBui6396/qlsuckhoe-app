@@ -1,0 +1,56 @@
+<div class="container-fluid">
+      <section id="main-content">
+          <section class="wrapper">
+              <div class="row">
+  <div class="col-lg-12">
+    <h3 class="page-header"><i class="icon_piechart"></i>Thống Kê</h3>
+    <ol class="breadcrumb bor panel">
+      <li><i class="fa fa-home"></i><a href="" class="fonta">Home</a></li>
+      <li><i class="fap fonta">yte</i></li>
+      <li><i class="fap fonta">thongke</i></li>
+    </ol>
+        <section class="panel">
+          <header class="breadcrumb bor">
+             <label for="chon">Thống kê sức khỏe sinh viên</label>
+          </header>
+          <label for="idhocki">Học kỳ :</label>
+          <mat-form-field class="example-full-width2">
+             <mat-select  placeholder="Học Kì" [(ngModel)]="idhocki1" (selectionChange)="onChangeHocki($event)">
+                <mat-option *ngFor="let hocki of hockis" [value]="hocki.idhocki" >{{hocki.tenhocki}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="row">
+             <div class="col-md-6">
+               <label for="chon">Tỉ lệ mắc bệnh sinh viên</label>
+               <div style="display: block;">
+                        <canvas *ngIf="loaded" baseChart height="300"
+                                    [data]="doughnutChartData"
+                                    [labels]="doughnutChartLabels"
+                                    [options]="lineChartOptions"
+                                    [colors]="pieChartColor"
+                                    [legend]="lineChartLegend"
+                                    [chartType]="doughnutChartType"
+                                    (chartHover)="chartHovered($event)"
+                                    (chartClick)="chartClicked($event)"></canvas>
+                </div>
+             </div>
+             <div class="col-md-6">
+                        <label for="chon">Tỉ lệ cân nặng sinh viên</label>
+                        <div style="display: block;">
+                          <canvas baseChart *ngIf="loaded1" height="250"
+                                        [datasets]="barChartData"
+                                        [labels]="barChartLabels"
+                                        [options]="barChartOptions"
+                                        [legend]="barChartLegend"
+                                        [chartType]="barChartType"
+                                        (chartHover)="chartHovered($event)"
+                                        (chartClick)="chartClicked($event)"></canvas>
+                         </div>
+                      </div>
+          </div>
+        </section>
+     </div>
+  </div>
+  </section>
+  </section>
+  </div>

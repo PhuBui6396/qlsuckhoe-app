@@ -1,0 +1,133 @@
+<div *ngIf="UserLogin">         
+           <aside>
+              <div *ngIf="UserLogin.role=='SINHVIEN'">
+                  <div id="sidebar" class="nav-collapse">
+                  <ul class="sidebar-menu">
+                <li class="">
+                  <a class="" routerLink="/sinhvien">
+                                <i class="icon_house_alt"></i>
+                                <span>Thông Tin Sinh Viên</span>
+                            </a>
+                </li>
+                <li>
+                    <a class="" routerLink="/sinhvien/tintuc">
+                                  <i class="glyphicon glyphicon-envelope"></i>
+                                  <span>Tin Tức</span>
+        
+                              </a>
+        
+                  </li>
+                  <li>
+                      <a class="" routerLink="/sinhvien/khamdinhky">
+                                    <i class="glyphicon glyphicon-th"></i>
+                                    <span>Kết Quả Khám Định Kỳ</span>
+          
+                                </a>
+          
+                    </li>
+                    <li>
+                        <a class="" routerLink="/sinhvien/sucosuckhoe">
+                                      <i class="glyphicon glyphicon-th"></i>
+                                      <span>Sự Cố Sức Khỏe</span>
+                                  </a>
+            
+                      </li>
+                  </ul>
+                  </div>
+              </div>
+                      <!-- sidebar menu start-->
+                      <div *ngIf="UserLogin.role=='ADMIN'">
+                          <div id="sidebar" class="nav-collapse">
+                          <ul class="sidebar-menu">
+                        <li class="">
+                          <a class="" routerLink="/quantri">
+                                        <i class="icon_house_alt"></i>
+                                        <span>Quản Lý Sinh Viên</span>
+                                    </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="/quantri/hocki">
+                                          <i class="glyphicon glyphicon-th"></i>
+                                          <span>Quản Lý Học Kì</span>
+                                      </a>
+                
+                          </li>
+                          <li>
+                              <a class="" routerLink="/quantri/yte">
+                                <i class="glyphicon glyphicon-user"></i>
+                                            <span>Quản Lý Cán Bộ Y Tế</span>
+                  
+                                        </a>
+                  
+                            </li>
+                          </ul>
+                          </div>
+                      </div>
+                      <div *ngIf="UserLogin.role=='YTE'">
+                          <div id="sidebar" class="nav-collapse">
+                      <ul class="sidebar-menu">
+                        <li class="">
+                          <a class="" routerLink="/yte">
+                                        <i class="icon_house_alt"></i>
+                                        <span>Hồ Sơ Sinh Viên</span>
+                                    </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="/yte/tintuc" >
+                                          <i class="icon_documents_alt"></i>
+                                          <span>Quản Lý Tin Tức</span>
+                
+                                      </a>
+                
+                          </li>
+                        <li class="sub-menu">
+                          <a href="javascript:;" class="">
+                                        <i class="icon_document_alt"></i>
+                                        <span>Danh Mục Bệnh</span>
+                                        <span class="menu-arrow arrow_carrot-right"></span>
+                                      </a>
+                          <ul class="sub">
+                            <li><a class="" routerLink="/yte/danhmuc" >> Quản Lý Danh Mục Bệnh</a></li>
+                            <li><a class="" routerLink="/yte/benh" >> Quản Lý Bệnh</a></li>
+                          </ul>
+                        </li>
+                        <li class="sub-menu">
+                          <a href="javascript:;" class="">
+                                        <i class="glyphicon glyphicon-list"></i>
+                                        <span>Thuốc Và Thiết Bị Y Tế</span>
+                                        <span class="menu-arrow arrow_carrot-right"></span>
+                                    </a>
+                          <ul class="sub">
+                            <li><a class="" routerLink="/yte/loaithuoc" >> Quản Lý Loại Thuốc</a></li>
+                            <li><a class="" routerLink="/yte/congty" >> Quản Lý Công Ty</a></li>
+                            <li><a class="" routerLink="/yte/thuoc" >> Quản Lý Thuốc</a></li>
+                            <li><a class="" routerLink="/yte/thietbi" >> Quản Lý Thiết Bị Y Tế</a></li>
+                          </ul>
+                        </li>
+                        <li>
+                          <a class="" routerLink="/yte/khamdinhky">
+                                        <i class="icon_genius"></i>
+                                        <span>Quản Lý Khám Định Kỳ</span>
+                                    </a>
+                        </li>
+                        <li>
+                            <a class="" routerLink="/yte/sucosuckhoe">
+                                          <i class="icon_genius"></i>
+                                          <span>Quản Lý Sự Cố Sức Khỏe</span>
+                                      </a>
+                
+                          </li>
+                        <li>
+                          <a class="" routerLink="/yte/thongke">
+                                        <i class="icon_piechart"></i>
+                                        <span>Thống Kê</span>
+              
+                                    </a>
+              
+                        </li>
+                      </ul>
+                      </div>
+                      <!-- sidebar menu end-->
+                    </div>
+                  </aside>
+</div>

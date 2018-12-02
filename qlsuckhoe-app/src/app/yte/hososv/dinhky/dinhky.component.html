@@ -1,0 +1,19 @@
+<button style="margin-left:600px" mat-button mat-dialog-close color="warn"><i class="glyphicon glyphicon-remove"></i></button>
+<h1 mat-dialog-title>Sự Cố Sức Khỏe :</h1>
+<div mat-dialog-content class="fix">
+  <p>Họ Tên: {{data.hoten}} - Mã Sinh Viên: {{data.masv}}</p>
+  <p>Ngày Xảy Ra Sự Cố :{{data.ngay}} <span>Loại Sự Cố :{{data.loaisuco}}</span></p>
+  <p>Biện Pháp: {{data.bienphap}}</p>
+  <div>
+    <p *ngFor="let thuoc of data.thuoc">
+      Loại Thuốc: {{thuoc.thuoc.loaithuoc.tenloai}}
+      <span>Tên Thuốc:{{thuoc.thuoc.tenthuoc}}</span>
+    </p>
+  </div>
+  <div>
+      <p *ngFor="let thietbi of data.thietbi">
+        Tên Thiết Bị: {{thietbi.thietbi.tenthietbi}}
+      </p>
+  </div>
+  <p>Mức Độ: {{data.mucdo}}<span>Người Xử Lý:{{data.nguoixuly}}</span></p>
+</div>

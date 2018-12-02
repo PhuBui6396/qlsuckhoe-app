@@ -1,0 +1,46 @@
+
+<div class="container-fluid">
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+<div class="col-lg-12">
+    <h3 class="page-header"><i class="glyphicon glyphicon-list"></i>Loại Thuốc</h3>
+    <ol class="breadcrumb bor">
+      <li><i class="fa fa-home"></i><a href="" class="fonta">Home</a></li>
+      <li><i class="fap fonta">yte</i></li>
+      <li><i class="fap fonta">loaithuoc</i></li>
+      <li><i class="fap fonta">add</i></li>
+    </ol>
+        <section class="panel">
+            <header class="breadcrumb bor">
+                <label for="chon">Thêm mới loại thuốc</label>
+              </header>
+              <form class="example-form" [formGroup]="addForm">
+                <div class="form-group">
+                    <div class="" formArrayName="tenloaithuocs">
+                      <div *ngFor="let group of addloaithuocArray.controls;let i = index" [formGroupName]="i">
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-6 col-md-8">
+                            <mat-form-field class="example-full-width1">
+                              <input formControlName="tenloai" matInput placeholder="Tên loại thuốc">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-xs-6 col-md-4">
+                            <button *ngIf="i!=0" (click)="deleteLoaithuoc(i)" mat-button color="warn" class="fixbtn"><i class="glyphicon glyphicon-remove"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button (click)="addLoaithuoc()" class="btn btn-success fixbtnadd"><i class="glyphicon glyphicon-plus"></i></button>
+                </div>
+                  <div class="form-group fixbutton">
+                      <button (click)="Add()" class="btn btn-success">Thêm mới</button>
+                      <button (click)="Huy()" style="margin-left:50px;" class="btn btn-danger">Hủy</button>
+                  </div>
+                </form>
+              </section>
+          </div>
+    </div>
+</section>
+</section>
+</div>

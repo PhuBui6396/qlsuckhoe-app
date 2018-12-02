@@ -1,0 +1,42 @@
+.fix{
+    margin-left: 10px;
+    border-radius: 10px;
+}
+.font{
+    margin-top:20px;
+    color: #797979;
+    font-size: 15px;
+    font-family: 'Lato', sans-serif;
+    font-style: italic;
+}
+.font1{
+    color: #797979;
+    font-size: 15px;
+    font-family: 'Lato', sans-serif;
+    font-style: italic;
+}
+.font2{
+    margin-left: 150px;
+    margin-top:15px;
+    color: #b9b1b1;
+    font-size: 15px;
+    font-family: 'Lato', sans-serif;
+    font-style: italic;
+}
+.example-form {
+    min-width: 100px;
+    max-width: 450px;
+    width: 100%;
+  }
+  .example-full-width {
+    width: 100%;
+    margin-left: 80px;
+  }
+  .example-full-width1 {
+    width: 100%;
+    margin-left: 150px;
+  }
+  .fixbutton{
+      margin-left: 250px;
+      margin-bottom: 20px;
+  }

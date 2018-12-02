@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+<div class="col-lg-12">
+    <h3 class="page-header"><i class="icon_document_alt"></i>Quản lý danh mục</h3>
+    <ol class="breadcrumb bor panel">
+      <li><i class="fa fa-home"></i><a href="" class="fonta">Home</a></li>
+      <li><i class="fap fonta">yte</i></li>
+      <li><i class="fap fonta">danhmuc</i></li>
+    </ol>
+      <section class="panel">
+          <header class="panel-heading">
+              Danh Mục
+            </header>
+        <div class="col-md-4" style="margin-top:15px">
+          <label for="chon" style="margin-top:30px">Thêm mới danh mục :</label>
+              <button class="btn btn-success" style="margin-left:30px" (click)="onAdd()"><i class="glyphicon glyphicon-plus"></i></button>
+        </div>
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource"  matSort>
+              <ng-container matColumnDef="tendanhmuc">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center">Tên Danh Mục</th>
+                  <td mat-cell *matCellDef="let row" style="text-align:center"> {{row.tendanhmuc}} </td>
+                </ng-container>
+                <ng-container matColumnDef="iddanhmuc">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center">Chức Năng</th>
+                    <td mat-cell *matCellDef="let row" style="text-align:center">
+                      <button (click)="updateDanhmuc(row)" mat-button class="btn1" matTooltip="Cập Nhật">
+                          <i class="glyphicon glyphicon-pencil"></i>
+                      </button>
+                      <button (click)="deleteDanhmuc(row.iddanhmuc)" mat-button color="warn" matTooltip="Xóa">
+                          <i class="glyphicon glyphicon-remove"></i>
+                      </button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                </tr>
+              </table>
+              <mat-paginator [pageSizeOptions]="[5, 10, 15]"></mat-paginator>
+            </div>
+          </section>
+        </div>
+      </div>
+      </section>
+      </section>
+      </div>

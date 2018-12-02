@@ -1,0 +1,67 @@
+.fix{
+    margin-left: 10px;
+    border-radius: 10px;
+}
+.font{
+    margin-top:20px;
+    color: #797979;
+    font-size: 15px;
+    font-family: 'Lato', sans-serif;
+    font-style: italic;
+}
+.font1{
+    color: #797979;
+    font-size: 15px;
+    font-family: 'Lato', sans-serif;
+    font-style: italic;
+}
+.font2{
+    color: #b9b1b1;
+    font-size: 15px;
+    font-family: 'Lato', sans-serif;
+    font-style: italic;
+}
+.example-form {
+    width: 100%;
+  }
+  .example-full-width {
+    min-width: 100px;
+    max-width: 450px;
+    width: 100%;
+    margin-left: 80px;
+  }
+  .example-full-width1 {
+    min-width: 100px;
+    max-width: 450px;
+    width: 100%;
+    margin-left: 150px;
+  }
+  .example-full-width2 {
+    width: 70%;
+    margin-left: 20px;
+  }
+  .fixbutton{
+      margin-left: 250px;
+      margin-bottom: 20px;
+  }
+  .fixbtn{
+    margin-left:120px;
+  }
+  .fixbtnadd{
+    min-width: 100px;
+    max-width: 450px;
+    margin-left: 150px;
+    margin-top:10px;
+    width: 10%;
+  }
+  .div1, .div2, .div3
+{
+    margin-top:5px;
+    width: 50%;
+    float: left;
+}
+.div4,.div5{
+    margin-top:5px;
+    width: 50%;
+    float: left;
+}

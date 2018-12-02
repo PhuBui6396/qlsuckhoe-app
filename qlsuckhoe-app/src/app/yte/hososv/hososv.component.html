@@ -1,0 +1,218 @@
+<div class="container-fluid">
+<section id="main-content">
+    <section class="wrapper">
+        <div class="row">
+  <div class="col-lg-12">
+    <h3 class="page-header"><i class="icon_house_alt"></i>Hồ Sơ Sinh Viên</h3>
+    <ol class="breadcrumb bor">
+      <li><i class="fa fa-home"></i><a routerLink="/yte" class="fonta">Home</a></li>
+      <li><i class="fap fonta">hososinhvien</i></li>
+    </ol>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <section class="panel">
+        <header class="panel-heading">
+            Hồ Sơ Sinh Viên
+          </header>
+        <div class="col-lg-4" style="margin-top:15px">
+            <label for="idhocki">Khóa :</label>
+          <select [(ngModel)]="khoa" class="form-control" (ngModelChange)="onChangekhoa($event)">
+              <option [ngValue]="khoa.khoa" *ngFor="let khoa of khoas">{{khoa.khoa}}</option>
+          </select>
+        </div>
+        <div class="col-lg-4" style="margin-top:15px">
+          <label for="chuyennganh">Chuyên Ngành :</label>
+        <select [(ngModel)]="chuyennganh" class="form-control" (ngModelChange)="onChangeChuyennganh($event)">
+          <option [ngValue]="cn.chuyennganh" *ngFor="let cn of chuyennganhs">{{cn.chuyennganh}}</option>
+        </select>
+      </div>
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>            
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+          <!-- Progress Column -->
+          <ng-container matColumnDef="hoten">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Họ và Tên</th>
+            <td mat-cell *matCellDef="let row"> {{row.hoten}} </td>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="masv">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Mã Sinh Viên </th>
+            <td mat-cell *matCellDef="let row"> {{row.masv}} </td>
+          </ng-container>
+          <ng-container matColumnDef="gioitinh">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Giới Tính </th>
+            <td mat-cell *matCellDef="let row"> {{row.gioitinh}} </td>
+          </ng-container>
+          <ng-container matColumnDef="diachi">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Địa chỉ </th>
+            <td mat-cell *matCellDef="let row"> {{row.diachi}} </td>
+          </ng-container>
+          <ng-container matColumnDef="chuyennganh">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Chuyên Ngành</th>
+            <td mat-cell *matCellDef="let row"> {{row.chuyennganh}} </td>
+          </ng-container>
+          <ng-container matColumnDef="khoa">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Khóa</th>
+            <td mat-cell *matCellDef="let row"> {{row.khoa}} </td>
+          </ng-container>
+          <ng-container matColumnDef="idsinhvien">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center">Chức Năng</th>
+              <td mat-cell *matCellDef="let row" style="text-align:center">
+                <button (click)="getSinhvien(row)" mat-button  matTooltip="Xem Thông tin">
+                    <i class="glyphicon glyphicon-user"></i>
+                </button>
+              </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+          </tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 15]"></mat-paginator>
+      </div>
+      <div *ngIf="sinhvien">
+        <nav mat-tab-nav-bar>
+          <a mat-tab-link (click)="findsv()" [active]="sv==true">Thông Tin Sinh Viên</a>
+          <a mat-tab-link (click)="findsuco()" [active]="sc==true">Sự Cố Sức Khỏe</a>
+          <a mat-tab-link (click)="findketqua()" [active]="kq==true">Kết Quả Khám Định Kỳ</a>
+        </nav>
+        <div *ngIf="sv==true">
+          <div class="row">
+            <div class="col-lg-6">
+              <label for="" style="margin-top:20px; margin-left:20px;">Thông tin cá nhân:</label>  
+              <div class="ac">      
+                <div class="f">
+                    <p> Họ Tên: {{sinhvien.hoten}}</p>
+                    <p> Mã Sinh Viên: {{sinhvien.masv}}</p>
+                    <p> Ngày Sinh: {{sinhvien.namsinh}}</p>
+                    <p> Giới Tính: {{sinhvien.gioitinh}}</p>
+                    <p> Địa Chỉ: {{sinhvien.diachi}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <label for="" style="margin-top:20px; margin-left:20px;">Thông tin khác:</label>
+              <div class="ac">      
+                <div *ngIf="dinhky" class="f">
+                    <p> Chiều Cao: {{(dinhky.chieucao*100-dinhky.chieucao*100%100)/100}}m{{dinhky.chieucao*100%100}}</p>
+                    <p> Cân Nặng: {{dinhky.cannang}}Kg</p>
+                    <p> Huyết Áp: {{dinhky.huyetap}}mmHg</p>
+                    <p> Nhịp Tim: {{dinhky.nhiptim}}bpm</p>
+                </div>
+                <div *ngIf="!dinhky" class="f">
+                    <p> Chiều Cao: Chưa Có</p>
+                    <p> Cân Nặng: Chưa Có</p>
+                    <p> Huyết Áp: Chưa Có</p>
+                    <p> Nhịp Tim: Chưa Có</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="sc==true">
+            <label for="" style="margin-top:20px; margin-left:20px;">Danh Sách Sự Cố:</label>
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSourceSuco"  matSort>
+                  <ng-container matColumnDef="hoten">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center">Họ Tên</th>
+                      <td mat-cell *matCellDef="let row" style="text-align:center"> {{row.hoten}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="masv">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center">Mã Sinh Viên</th>
+                        <td mat-cell *matCellDef="let row" style="text-align:center"> {{row.masv}} </td>
+                      </ng-container>
+                      <ng-container matColumnDef="ngay">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center">Ngày Xảy Ra Sự Cố</th>
+                          <td mat-cell *matCellDef="let row" style="text-align:center"> {{row.ngay}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="loaisuco">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center">Loại Sự Cố</th>
+                            <td mat-cell *matCellDef="let row" style="text-align:center"> {{row.loaisuco}} </td>
+                          </ng-container>
+                        <ng-container matColumnDef="mucdo">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center">Mức Độ</th>
+                            <td mat-cell *matCellDef="let row" style="text-align:center"> {{row.mucdo}} </td>
+                          </ng-container>
+                          <ng-container matColumnDef="nguoixuly">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center">Người Xử Lý</th>
+                              <td mat-cell *matCellDef="let row" style="text-align:center"> {{row.nguoixuly}} </td>
+                            </ng-container>
+                    <ng-container matColumnDef="idsinhvien">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center">Chức Năng</th>
+                        <td mat-cell *matCellDef="let row" style="text-align:center">
+                          <button (click)="viewSuco(row)" mat-button class="btn1" matTooltip="Xem Chi Tiết">
+                              <i class="glyphicon glyphicon-file"></i>
+                          </button>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumnsSuco"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumnsSuco;">
+                    </tr>
+                  </table>
+                  <mat-paginator [pageSizeOptions]="[5, 10, 15]"></mat-paginator>
+                </div>  
+        </div>
+        <div *ngIf="kq==true">
+          <div class="fix1">
+            <label for="">Chọn Học Kì :</label>
+            <mat-form-field class="fix">
+              <mat-select placeholder="Học kì" [(ngModel)]="idhocki" (ngModelChange)="onChangeHocki($event)">
+                <mat-option *ngFor="let hocki of hockis" [value]="hocki.idhocki">
+                  {{hocki.tenhocki}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <label for="" style="margin-top:20px; margin-left:20px;">Danh Sách Kết Quả Khám Định Kỳ:</label>
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSourceDinhki"  matSort>
+                  <ng-container matColumnDef="hoten">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center">Họ Tên</th>
+                      <td mat-cell *matCellDef="let row" style="text-align:center"> {{row.hoten}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="masv">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center">Mã Sinh Viên</th>
+                        <td mat-cell *matCellDef="let row" style="text-align:center"> {{row.masv}} </td>
+                      </ng-container>
+                      <ng-container matColumnDef="ngaykham">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center">Ngày Khám</th>
+                          <td mat-cell *matCellDef="let row" style="text-align:center"> {{row.ngaykham}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="chieucao">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center">Chiều Cao</th>
+                            <td mat-cell *matCellDef="let row" style="text-align:center"> {{row.chieucao}} </td>
+                          </ng-container>
+                        <ng-container matColumnDef="cannang">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center">Cân Nặng</th>
+                            <td mat-cell *matCellDef="let row" style="text-align:center"> {{row.cannang}} </td>
+                          </ng-container>
+                          <ng-container matColumnDef="ketluan">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center">Kết Luận</th>
+                              <td mat-cell *matCellDef="let row" style="text-align:center"> {{row.ketluan}} </td>
+                            </ng-container>
+                    <ng-container matColumnDef="ketqua">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center">Chức Năng</th>
+                        <td mat-cell *matCellDef="let row" style="text-align:center">
+                          <button (click)="viewKetqua(row)" mat-button class="btn1" matTooltip="Xem Chi Tiết">
+                              <i class="glyphicon glyphicon-file"></i>
+                          </button>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumnsDinhki"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumnsDinhki;">
+                    </tr>
+                  </table>
+                  <mat-paginator [pageSizeOptions]="[5, 10, 15]"></mat-paginator>
+                </div>  
+        </div>
+      </div>
+    </section>
+  </div>
+</div>  
+</section>
+</section>
+</div>

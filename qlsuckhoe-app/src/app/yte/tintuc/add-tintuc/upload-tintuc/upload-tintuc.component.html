@@ -1,0 +1,6 @@
+<input style="display: none" 
+type="file" (change)="onFileChanged($event)"
+placeholder="Upload file" accept="image/*"
+ #fileInput>
+<button style="margin-top:20px" (click)="fileInput.click()" mat-button color="primary"><i class="glyphicon glyphicon-paperclip">...File</i></button>
+<button class="btn btn-success" (click)="onUpload()">Upload!</button>

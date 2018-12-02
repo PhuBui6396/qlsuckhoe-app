@@ -1,0 +1,7 @@
+<div class="container-fluid">
+  <h1 mat-dialog-title>{{data.tieude}}</h1>
+  <div mat-dialog-content>
+    <p class="f">Ngày đăng : {{data.ngaydang}}</p>
+    <div class="fix" [innerHTML]="data.noidung | safeHtml"></div>
+  </div>
+</div>

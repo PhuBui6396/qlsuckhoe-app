@@ -1,0 +1,47 @@
+.bg-input{
+    text-align: left;
+}
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    margin-top:20px;
+    font-size: 14px;
+    width: 100%;
+  }
+  .btn1 {
+    color : rgba(241, 238, 35, 0.96);
+  }
+  .fixsv{
+    padding-top: 10px;
+    padding-left:40px;
+  }
+  .ac{
+    border-style: outset;
+    margin-top: 5px;
+    margin-left:30px;
+    margin-bottom:20px;
+  }
+  .ac1{
+    width: 40%;
+    border-style: inset;
+  }
+  .fixsv1{
+    padding-top: 10px;
+  }
+  .fix{
+    margin-left:30px;
+    width: 40%;
+  }
+  .fix1{
+    margin-top:10px;
+    margin-left:20px;
+  }
+  .f{
+    margin: 10px 0px 10px 50px;
+    
+  }
+  a{
+      text-decoration: none;
+  }
